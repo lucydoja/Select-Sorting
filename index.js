@@ -85,31 +85,32 @@ window.onload = function () {
 
 // CLICK A ORDENAR
     ubiOrdenar.addEventListener("click", function () {
-        BubbleSort(numCartas);
+        SelectSort(numCartas);
     });
 
 // BUBBLE SORTING
-    function BubbleSort(arr) {
+    function SelectSort(arr) {
         
-        let fin = arr.length - 1;
-        while (fin > 0) {
-            for (let i = 0; i <= fin; i++) {
+        let inicio = 0;
+
+        while (inicio < arr.length) {
+
+            for (let i = inicio+1; i < arr.length; i++) {
                 
-                
-                if (arr[i] > arr[i + 1]) {
-                    let vacio = arr[i + 1];
-                    arr[i + 1] = arr[i];
+                if (arr[inicio] > arr[i]) {
+                    let vacio = arr[inicio];
+                    arr[inicio] = arr[i];
                     arr[i] = vacio;
 
 // Aqui se van acomodando los divs de la carta
-                    let vacio2 = ubiCartas.children[i + 1].innerHTML;
-                    ubiCartas.children[i + 1].innerHTML = ubiCartas.children[i].innerHTML;
+                    let vacio2 = ubiCartas.children[inicio].innerHTML;
+                    ubiCartas.children[inicio].innerHTML = ubiCartas.children[i].innerHTML;
                     ubiCartas.children[i].innerHTML = vacio2;
                 
                 }
                 
             }
-            fin--;
+            inicio++;
         }
     }
 }
